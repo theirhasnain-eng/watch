@@ -56,10 +56,15 @@ export default function Category() {
       {loading ? (
         <p className="text-center text-gray-400 py-10">Products loading...</p>
       ) : products.length === 0 ? (
-        <p className="text-center text-gray-400 py-10">No product have been added yet</p>
+        <p className="text-center text-gray-400 py-10">
+          No product have been added yet
+        </p>
       ) : (
         /* Product Grid */
-        <div data-aos="fade-up" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+        <div
+          data-aos="fade-up"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10"
+        >
           {products.map((product) => (
             <div key={product._id} className="group cursor-pointer">
               {/* Image with wishlist icon */}
@@ -71,11 +76,13 @@ export default function Category() {
                 />
                 <button
                   onClick={() => toggleWishlist(product._id)}
-                  className="absolute top-3 right-3 bg-white p-2 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute top-3 right-3 bg-white p-2 rounded-sm opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
                 >
                   <Heart
                     size={18}
-                    className={isInWishlist(product._id) ? "fill-black" : "fill-none"}
+                    className={
+                      isInWishlist(product._id) ? "fill-black" : "fill-none"
+                    }
                   />
                 </button>
               </div>
@@ -87,12 +94,12 @@ export default function Category() {
 
               {/* Price / Add to cart on hover */}
               <div className="mt-1 text-sm">
-                <span className="text-gray-700 group-hover:hidden">
+                <span className="text-gray-700 md:group-hover:hidden">
                   ${product.price?.toLocaleString()}.00
                 </span>
                 <button
                   onClick={() => addToCart(product._id)}
-                  className="hidden group-hover:inline text-black underline"
+                  className="block md:hidden md:group-hover:inline text-black underline mt-1 md:mt-0"
                 >
                   ADD TO CART
                 </button>
